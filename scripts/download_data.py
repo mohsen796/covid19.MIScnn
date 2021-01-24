@@ -44,8 +44,9 @@ def download_from_url(url, dst):
     @param: url to download file
     @param: dst place to put the file
     """
-    import urllib
-    urllib.urlretrieve(url, filename=dst)
+    import urllib.request
+    data = urllib.request.urlretrieve(url,filename=dst)
+
 
 #-----------------------------------------------------#
 #                     Runner Code                     #
