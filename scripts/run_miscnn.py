@@ -115,7 +115,8 @@ cb_mc = ModelCheckpoint(os.path.join(fold_subdir, "model.best.hdf5"),
 #          Run Pipeline for provided CV Fold          #
 #-----------------------------------------------------#
 # Run pipeline for cross-validation fold
-model.load(os.path.join(fold_subdir, "model.best.hdf5"))
+if os.path.isfile(os.path.join(fold_subdir, "model.best.hdf5")):
+  model.load(os.path.join(fold_subdir, "model.best.hdf5"))
 run_fold(fold, model, epochs=1000, iterations=150, evaluation_path="evaluation",
          draw_figures=True, callbacks=[cb_lr, cb_es, cb_tb, cb_cl, cb_mc],
          save_models=False)
