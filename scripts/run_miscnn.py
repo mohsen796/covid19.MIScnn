@@ -45,10 +45,15 @@ import os
 parser = argparse.ArgumentParser(description="Automated COVID-19 Segmentation")
 parser.add_argument("-f", "--fold", help="Cross-validation fold. Range: [0:5]",
                     required=True, type=int, dest="fold")
+parser.add_argument("-r", "--run", help="run number",
+                    required=True, type=int, dest="run")
 args = parser.parse_args()
 fold = args.fold
+run = args.run
+
 #fold_subdir = os.path.join("evaluation", "fold_" + str(fold))
-fold_subdir = os.path.join("/content/drive/MyDrive/Project/evaluation", "fold_" + str(fold))
+fold_subdir_fold = os.path.join("/content/drive/MyDrive/Project/evaluation", "fold_" + str(fold))
+fold_subdir=os.path.join(fold_subdir_fold, "run_" + str(run))
 #-----------------------------------------------------#
 #               Setup of MIScnn Pipeline              #
 #-----------------------------------------------------#
